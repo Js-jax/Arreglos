@@ -1,5 +1,4 @@
 #include <iostream>
-#include <conio.h>
 
 using namespace std;
 
@@ -21,7 +20,8 @@ public:
 
 void examen::opcion()
 {
-  cout << "Elige la operacion que deseas realizar 1. Suma de dos arreglos 2 -  Resta de dos arreglos 3 - Multiplicaciónde dos arreglos 4 - Divisiónde dos arreglos 5 - Suma consecutivade un arreglo 6 - Calcular promediode un arreglo 7 - Concatenaciónde dos arreglos 8 - Salir ";
+
+  cout << " \n 1 - Realizar otra operacion \n\n2 - Regresar al menu principal\n\n3 - Salir. " << endl;
 }
 
 void examen::suma()
@@ -51,7 +51,7 @@ void examen::suma()
     }
   } while (n == 0 && m == 0);
 
-  cout << "Ingresa el primer valor " << endl;
+  cout << "Ingresa el primer " << endl;
 
   for (int i = 0; i < n; i++)
   {
@@ -59,7 +59,7 @@ void examen::suma()
     cin >> A[i];
   }
 
-  cout << " Ingrese el segundo valor " << endl;
+  cout << " Ingrese el segundo " << endl;
 
   for (int i = 0; i < m; i++)
   {
@@ -143,7 +143,7 @@ void examen::resta()
     }
   } while (n == 0 && m == 0);
 
-  cout << "Ingresa el primer valor " << endl;
+  cout << "Ingresa el primer " << endl;
 
   for (int i = 0; i < n; i++)
   {
@@ -151,7 +151,7 @@ void examen::resta()
     cin >> A[i];
   }
 
-  cout << " Ingrese el segundo valor " << endl;
+  cout << " Ingrese el segundo " << endl;
 
   for (int i = 0; i < m; i++)
   {
@@ -236,7 +236,7 @@ void examen::multi()
     }
   } while (n == 0 && m == 0);
 
-  cout << "Ingresa el primer valor " << endl;
+  cout << "Ingresa el primer " << endl;
 
   for (int i = 0; i < n; i++)
   {
@@ -244,7 +244,7 @@ void examen::multi()
     cin >> A[i];
   }
 
-  cout << " Ingrese el segundo valor " << endl;
+  cout << " Ingrese el segundo " << endl;
 
   for (int i = 0; i < m; i++)
   {
@@ -329,7 +329,7 @@ void examen::division()
     }
   } while (n == 0 && m == 0);
 
-  cout << "Ingresa el primer valor " << endl;
+  cout << "Ingresa el primer " << endl;
 
   for (int i = 0; i < n; i++)
   {
@@ -337,7 +337,7 @@ void examen::division()
     cin >> A[i];
   }
 
-  cout << " Ingrese el segundo valor " << endl;
+  cout << " Ingrese el segundo " << endl;
 
   for (int i = 0; i < m; i++)
   {
@@ -399,9 +399,9 @@ void examen::sumacons()
 
   int a = 0, b = 0, res = 0;
 
-  cout << "Ingrese el valor inicial: " << endl;
+  cout << "Ingrese el inicial: " << endl;
   cin >> a;
-  cout << "Ingrese el valor final: " << endl;
+  cout << "Ingrese el final: " << endl;
   cin >> b;
 
   if (a < b)
@@ -450,34 +450,45 @@ void examen::promedio()
 void examen::concat()
 {
 
-  cout << "Ingresa el tamaC1o del primer arreglo de mayor a 0 y menor a 20: ";
+  cout << "ingrese el tamano del primer arreglo: ";
   cin >> n;
-
-  cout << "Ingresa el tamaC1o del segundo arreglo  mayor a 0 y menor a 20: \n";
+  cout << "ingrese el tamano del segundo arreglo: ";
   cin >> m;
 
-  cout << "Ingresa valores a concatenar  " << endl;
+  int A[n], B[m];
 
+  cout << " Ingrese los valores a concatenar \n";
   for (int i = 0; i < n; i++)
   {
-    cout << "--------" << endl;
+    cout << "ingrese: ";
     cin >> A[i];
   }
-
-  cout << " Ingrese los valores a concatenar  " << endl;
-
+  cout << " Ingrese los valores a concatenar \n";
   for (int i = 0; i < m; i++)
   {
-    cout << "--------" << endl;
+    cout << "ingrese: ";
     cin >> B[i];
   }
 
-  for (int i = n + 1; i <= m; i++)
+  int e = 0, C[m + n];
+
+  for (int i = 0; i < n; i++)
   {
-    C[i] = B[i];
-    cout << "Sobrante b" << C[i] << endl;
+    C[i] = A[i];
+    e++;
+  }
+  for (int j = 0; j < m; j++)
+  {
+    C[e] = B[j];
+    e++;
+  }
+  cout << "el ordenamiento \n";
+  for (int i = 0; i < (n + m); i++)
+  {
+    cout << C[i] << endl;
   }
 }
+
 int main()
 {
 
@@ -485,118 +496,164 @@ int main()
   int opc;
   int opc2;
 
-  retorno.opcion();
-  cin >> opc;
-
   do
   {
+    cout << "Elige la operacion que deseas realizar\n\n 1. Suma de dos arreglos \n 2 -  Resta de dos arreglos\n 3 - Multiplicacionde dos arreglos\n 4 - Divisionde dos arreglos\n 5 - Suma consecutivade un arreglo \n 6 - Calcular promediode un arreglo\n 7 - Concatenacionde dos arreglos\n 8 - Salir " << endl;
+    cin >> opc;
 
     if (opc == 1)
     {
+      retorno.suma();
 
       do
       {
-        retorno.suma();
-        cout << "\nDesea realizar otra suma? \nSi[1]  No[2]" << endl;
+        retorno.opcion();
         cin >> opc2;
 
-      } while (opc2 == 1);
-    }
-  } while (opc2 == 1);
+        if (opc2 == 1)
+        {
+          retorno.suma();
+        }
+        else if (opc2 == 3)
+        {
+          cout << "adios";
+          return 0;
+        }
 
-  do
-  {
+      } while (opc2 != 2);
+    }
 
     if (opc == 2)
     {
+      retorno.resta();
 
       do
       {
-        retorno.resta();
-        cout << "\nDesea realizar otra resta? \nSi[1]  No[2]" << endl;
+        retorno.opcion();
         cin >> opc2;
 
-      } while (opc2 == 1);
-    }
-  } while (opc2 == 1);
+        if (opc2 == 1)
+        {
+          retorno.resta();
+        }
+        else if (opc2 == 3)
+        {
+          cout << "adios";
+          return 0;
+        }
 
-  do
-  {
+      } while (opc2 != 2);
+    }
 
     if (opc == 3)
     {
+      retorno.multi();
 
       do
       {
-        retorno.multi();
-        cout << "\nDesea realizar otra Multiplicacion? \nSi[1]  No[2]" << endl;
+        retorno.opcion();
         cin >> opc2;
 
-      } while (opc2 == 1);
-    }
-  } while (opc2 == 1);
+        if (opc2 == 1)
+        {
+          retorno.multi();
+        }
+        else if (opc2 == 3)
+        {
+          cout << "adios";
+          return 0;
+        }
 
-  do
-  {
+      } while (opc2 != 2);
+    }
 
     if (opc == 4)
     {
+      retorno.division();
 
       do
       {
-        retorno.division();
-        cout << "\nDesea realizar otra Division \nSi[1]  No[2]" << endl;
+        retorno.opcion();
         cin >> opc2;
 
-      } while (opc2 == 1);
-    }
-  } while (opc2 == 1);
+        if (opc2 == 1)
+        {
+          retorno.division();
+        }
+        else if (opc2 == 3)
+        {
+          cout << "adios";
+          return 0;
+        }
 
-  do
-  {
+      } while (opc2 != 2);
+    }
 
     if (opc == 5)
     {
+      retorno.sumacons();
 
       do
       {
-        retorno.sumacons();
-        cout << "\nDesea realizar otra Division \nSi[1]  No[2]" << endl;
+        retorno.opcion();
         cin >> opc2;
 
-      } while (opc2 == 1);
-    }
-  } while (opc2 == 1);
+        if (opc2 == 1)
+        {
+          retorno.sumacons();
+        }
+        else if (opc2 == 3)
+        {
+          cout << "adios";
+          return 0;
+        }
 
-  do
-  {
+      } while (opc2 != 2);
+    }
 
     if (opc == 6)
     {
+      retorno.promedio();
 
       do
       {
-        retorno.promedio();
-        cout << "\nDesea volver a calcular el promedio \nSi[1]  No[2]" << endl;
+        retorno.opcion();
         cin >> opc2;
 
-      } while (opc2 == 1);
-    }
-  } while (opc2 == 1);
+        if (opc2 == 1)
+        {
+          retorno.promedio();
+        }
+        else if (opc2 == 3)
+        {
+          cout << "adios";
+          return 0;
+        }
 
-  do
-  {
+      } while (opc2 != 2);
+    }
 
     if (opc == 7)
     {
+      retorno.concat();
 
       do
       {
-        retorno.concat();
-        cout << "\nDesea volver a concatenar \nSi[1]  No[2]" << endl;
+        retorno.opcion();
         cin >> opc2;
 
-      } while (opc2 == 1);
+        if (opc2 == 1)
+        {
+          retorno.concat();
+        }
+        else if (opc2 == 3)
+        {
+          cout << "adios";
+          return 0;
+        }
+
+      } while (opc2 != 2);
     }
-  } while (opc2 == 1);
+
+  } while (opc != 8);
 }
